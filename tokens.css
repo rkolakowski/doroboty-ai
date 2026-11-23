@@ -1,18 +1,18 @@
-/* Poster People host adaptation. Reference kit remains immutable. */
+/* Portal theme from the project DESIGN.md, applied to the shared host recipes. */
 :root {
   color-scheme: light;
 
-  --theme-name: "Poster People";
+  --theme-name: "Cobalt and lime";
   --theme-icon-family: "Lucide";
   --theme-icon-style: "outlined";
   --icon-light-display: none;
   --icon-regular-display: inline;
   --icon-bold-display: none;
 
-  --gui-font-brand: "Geist Serif", Georgia, serif;
-  --gui-font-ui: Arial, Helvetica, system-ui, sans-serif;
-  --gui-font-editorial: "Geist Serif", Georgia, serif;
-  --gui-font-data: Arial, Helvetica, system-ui, sans-serif;
+  --gui-font-ui: system-ui, sans-serif;
+  --gui-font-brand: var(--gui-font-ui);
+  --gui-font-editorial: var(--gui-font-ui);
+  --gui-font-data: var(--gui-font-ui);
   --font-ui: var(--gui-font-ui);
   --font-brand: var(--gui-font-brand);
   --font-editorial: var(--gui-font-editorial);
@@ -53,8 +53,8 @@
   --gui-leading-xxs: 15px;
   --gui-text-xs: 13px;
   --gui-leading-xs: 17px;
-  --gui-text-s: 15px;
-  --gui-leading-s: 21px;
+  --gui-text-s: 16px;
+  --gui-leading-s: 24px;
   --gui-text-m: 17px;
   --gui-leading-m: 26px;
   --gui-text-l: 26px;
@@ -71,10 +71,10 @@
 
   --gui-radius-zero: 0;
   --gui-radius-xs: 5px;
-  --gui-radius-s: 18px;
-  --gui-radius-m: 24px;
-  --gui-radius-l: 24px;
-  --gui-radius-xl: 24px;
+  --gui-radius-s: 8px;
+  --gui-radius-m: 14px;
+  --gui-radius-l: 14px;
+  --gui-radius-xl: 14px;
   --gui-radius-full: 9999px;
   --radius: var(--gui-radius-s);
 
@@ -82,9 +82,9 @@
   --gui-neutral-1-transparent: #ffffff33;
   --gui-neutral-2: #ffffff;
   --gui-neutral-2-transparent: #fbfbfb33;
-  --gui-neutral-3: #f4f4f0;
+  --gui-neutral-3: #f7f8fc;
   --gui-neutral-3-transparent: #f4f4f433;
-  --gui-neutral-4: #d8d5d1;
+  --gui-neutral-4: #dce2eb;
   --gui-neutral-4-transparent: #e7e7e733;
   --gui-neutral-5: #cdcdcd;
   --gui-neutral-5-transparent: #cdcdcd33;
@@ -92,13 +92,15 @@
   --gui-neutral-6-transparent: #a1a1a133;
   --gui-neutral-7: #7d7d7d;
   --gui-neutral-7-transparent: #7d7d7d33;
-  --gui-neutral-8: #5e5a5c;
+  --gui-neutral-8: #525e70;
   --gui-neutral-8-transparent: #55555533;
   --gui-neutral-9: #333333;
   --gui-neutral-9-transparent: #33333333;
-  --gui-neutral-10: #181818;
-  --gui-color-1: #ff90e8;
-  --gui-color-2: #181818;
+  --gui-neutral-10: #252c36;
+  --gui-color-1: #2949df;
+  --gui-color-2: var(--gui-color-1);
+  --gui-highlight: #ddf879;
+  --gui-accent-hover: #2039b4;
   --gui-color-2-transparent: #085e5533;
   --gui-color-3: #ffe45b;
   --gui-color-3-transparent: #ffed9b33;
@@ -115,23 +117,23 @@
   --gui-error: #fc032d;
   --gui-neutral-10-transparent: #00000033;
   --gui-backdrop: #18181899;
-  --gui-color-1-transparent: #ffe0f7;
+  --gui-color-1-transparent: #edf0ff;
   --gui-success-transparent: #00906c33;
   --gui-error-transparent: #fc032d33;
 
-  --gui-canvas: #f4f4f0;
+  --gui-canvas: var(--gui-neutral-3);
   --gui-surface: var(--gui-neutral-2);
   --gui-surface-muted: var(--gui-neutral-3);
   --gui-text: var(--gui-neutral-10);
-  --gui-text-muted: #5e5a5c;
+  --gui-text-muted: var(--gui-neutral-8);
   --gui-text-muted-accessible: var(--gui-neutral-8);
-  --gui-edge: #181818;
+  --gui-edge: var(--gui-neutral-4);
+  --gui-control-edge: #778394;
   --gui-accent: var(--gui-color-1);
-  --gui-accent-text: #181818;
-  /* Dark labels on pink actions. */
-  --gui-accent-text-accessible: var(--gui-neutral-10);
+  --gui-accent-text: #fff;
+  --gui-accent-text-accessible: var(--gui-accent-text);
   --gui-danger: var(--gui-error);
-  --gui-focus: #181818;
+  --gui-focus: var(--gui-accent);
   --gui-link: var(--gui-color-2);
   --gui-control: #ffffff;
   --gui-control-hover: var(--gui-neutral-4);
@@ -140,16 +142,15 @@
 
   --gui-shadow-none: none;
   --gui-shadow-s: 0 2px 4px 0 #00000000;
-  --gui-shadow-m: inset 0 0 0 1px #181818;
+  --gui-shadow-m: inset 0 0 0 1px var(--gui-edge);
   --gui-shadow-l: 0 16px 48px 0 #00000000;
-  /* Visible ink contours; no offset shadows. */
-  --gui-edge-shadow: inset 0 0 0 1px #181818;
+  --gui-edge-shadow: inset 0 0 0 1px var(--gui-edge);
   --gui-divider-top-shadow: inset 0 1px var(--gui-edge);
   --gui-divider-bottom-shadow: inset 0 -1px var(--gui-edge);
   --gui-divider-inline-end-shadow: inset -1px 0 var(--gui-edge);
   --gui-accent-edge-shadow: none;
   --gui-accent-bar-shadow: inset 4px 0 var(--gui-color-1);
-  --gui-control-shadow: inset 0 0 0 1px #181818;
+  --gui-control-shadow: inset 0 0 0 1px var(--gui-control-edge);
   --gui-control-hover-shadow: none;
   --gui-control-focus-shadow: none;
   --gui-control-invalid-shadow: none;
@@ -250,8 +251,8 @@
   --card-foreground: var(--gui-text);
   --popover: var(--gui-neutral-1);
   --popover-foreground: var(--gui-text);
-  --primary: #ff90e8;
-  --primary-foreground: #181818;
+  --primary: var(--gui-accent);
+  --primary-foreground: var(--gui-accent-text);
   --secondary: var(--gui-surface-muted);
   --secondary-foreground: var(--gui-text);
   --muted: var(--gui-surface-muted);
@@ -269,7 +270,7 @@
   --chart-5: var(--gui-neutral-7);
   --sidebar: var(--gui-surface);
   --sidebar-foreground: var(--gui-text);
-  --sidebar-primary: var(--gui-neutral-10);
+  --sidebar-primary: var(--gui-accent);
   --sidebar-primary-foreground: var(--gui-neutral-1);
   --sidebar-accent: var(--gui-color-1);
   --sidebar-accent-foreground: var(--gui-accent-text);

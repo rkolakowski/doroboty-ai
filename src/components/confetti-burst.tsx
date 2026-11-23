@@ -10,7 +10,7 @@ const particles = Array.from({ length: 30 }, (_, index) => {
     x: Math.cos(direction) * distance,
     y: -65 - Math.sin(direction) * distance,
     rotation: (index % 2 ? -1 : 1) * (180 + ((index * 47) % 360)),
-    color: ["var(--gui-color-1)", "var(--gui-color-3)", "var(--gui-text)"][index % 3],
+    color: ["var(--gui-accent)", "var(--gui-highlight)", "var(--gui-text)"][index % 3],
   };
 });
 

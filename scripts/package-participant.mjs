@@ -52,11 +52,20 @@ const entries = [
   "docs/case",
 ];
 fs.mkdirSync(target, { recursive: true });
+const localScenario = path.join("src", "features", "prototype", "data", "build-scenario.json");
+const localScenarioTest = path.join("src", "features", "prototype", "build-scenario.test.ts");
 for (const entry of entries) {
   const destination = path.join(target, entry);
   fs.mkdirSync(path.dirname(destination), { recursive: true });
-  fs.cpSync(path.join(root, entry), destination, { recursive: true });
+  fs.cpSync(path.join(root, entry), destination, {
+    recursive: true,
+    filter: (source) => ![localScenario, localScenarioTest].includes(path.relative(root, source)),
+  });
 }
+fs.writeFileSync(
+  path.join(target, localScenario),
+  '{\n  "companies": [],\n  "jobs": [],\n  "people": [],\n  "applications": []\n}\n',
+);
 const files = {};
 function visit(folder, prefix = "") {
   for (const entry of fs.readdirSync(folder, { withFileTypes: true })) {

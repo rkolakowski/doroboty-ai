@@ -289,7 +289,7 @@ test("mobile navigation, light-only appearance and keyboard person selection", a
   await page.reload();
   await expect(page.getByRole("combobox", { name: "Motyw" })).toHaveCount(0);
   await expect(page.locator("html")).not.toHaveClass(/dark/);
-  await expect(page.locator("body")).toHaveCSS("background-color", "rgb(244, 244, 240)");
+  await expect(page.locator("body")).toHaveCSS("background-color", "rgb(247, 248, 252)");
   await page.screenshot({ path: "artifacts/settings-mobile-light.png", fullPage: true });
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
 });
@@ -458,7 +458,7 @@ test("legacy dark preference keeps scenario data and renders the light interface
     "Zachowaj mój profil",
   );
   await expect(page.locator("html")).not.toHaveClass(/dark/);
-  await expect(page.locator("body")).toHaveCSS("background-color", "rgb(244, 244, 240)");
+  await expect(page.locator("body")).toHaveCSS("background-color", "rgb(247, 248, 252)");
   await page.getByRole("button", { name: "Zapisz profil", exact: true }).click();
   expect(
     await page.evaluate((key) => JSON.parse(localStorage.getItem(key)!).theme, STORAGE_KEY),
@@ -576,9 +576,7 @@ test("desktop reset synchronizes search, category and facets with the URL", asyn
   );
 });
 
-test("canonical marketplace typography and search geometry match Poster People breakpoints", async ({
-  page,
-}) => {
+test("marketplace typography and search retain their responsive geometry", async ({ page }) => {
   for (const [width, title, card] of [
     [1280, "72px", "28px"],
     [1100, "58px", "26px"],
@@ -655,8 +653,8 @@ test("homepage surfaces and marketplace action type roles match the shared refer
   const cards = page.locator("main article.prototype-panel");
   await expect(cards).toHaveCount(3);
   for (const card of await cards.all()) {
-    await expect(card).toHaveCSS("border-radius", "24px");
-    await expect(card).toHaveCSS("box-shadow", /rgb\(24, 24, 24\).*1px inset/);
+    await expect(card).toHaveCSS("border-radius", "14px");
+    await expect(card).toHaveCSS("box-shadow", /rgb\(220, 226, 235\).*1px inset/);
   }
   for (const [width, searchSize, offerSize, payLine] of [
     [1280, "14px", "14px", "34.8px"],
@@ -671,6 +669,8 @@ test("homepage surfaces and marketplace action type roles match the shared refer
     const search = page.getByRole("button", { name: "Szukaj", exact: true });
     await expect(search).toHaveCSS("font-size", searchSize);
     await expect(search).toHaveCSS("font-weight", "600");
+    await expect(search).toHaveCSS("background-color", "rgb(41, 73, 223)");
+    await expect(search).toHaveCSS("color", "rgb(255, 255, 255)");
     await expect(search).toHaveCSS("letter-spacing", "normal");
     await expect(search).toHaveCSS("line-height", `${parseInt(searchSize) * 1.5}px`);
     await expect(search).toHaveCSS("border-top-width", "1px");

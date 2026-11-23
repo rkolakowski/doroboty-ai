@@ -1,0 +1,167 @@
+{
+  "companies": [
+    {
+      "sizeLabel": "501+",
+      "description": "Zespół ma osobę odpowiedzialną za operacje i inżyniera. Na razie nie powstaje osobny dział AI.",
+      "summary": "Przykładowy pracodawca w scenariuszu Build.",
+      "id": "co-000002",
+      "slug": "co-000002",
+      "name": "Splot Operacje",
+      "websiteUrl": "",
+      "location": "Łódź"
+    }
+  ],
+  "applications": [
+    {
+      "nextStepDue": "2026-11-24",
+      "events": [
+        {
+          "note": "",
+          "at": "2026-06-22T02:20:51.000Z",
+          "stage": "submitted"
+        },
+        {
+          "note": "",
+          "at": "2026-06-30T02:20:51.000Z",
+          "stage": "reviewed"
+        }
+      ],
+      "score": 76,
+      "jobTitle": "AI Engineer",
+      "candidateId": "cand-008793",
+      "summary": "Przykładowe zgłoszenie z danych scenariusza Build.",
+      "id": "app-029542",
+      "answer": "W dotychczasowych projektach rozwijałem umiejętności potrzebne do wdrożeń AI, w tym w obszarze: planowanie dostaw. Uczestniczyłem w przygotowaniu i doskonaleniu rozwiązania, uwzględniając potrzeby użytkowników oraz ograniczenia danych. Potrafię współpracować z osobami technicznymi i biznesowymi, porządkować zadania i omawiać kolejne kroki. Znam znaczenie sprawdzania efektów i odpowiedzialności za uzgodniony zakres. Chętnie przedstawię konkretny przykład oraz sposób pracy zespołu. Interesuje mnie możliwość dalszego rozwoju i pracy przy wdrożeniu odpowiadającym rzeczywistym potrzebom organizacji. Warunki rozpoczęcia współpracy oraz dostępność materiałów projektowych chciałbym uzgodnić podczas rozmowy. Odpowiadałem za integrację modelu i analizę błędów. Nie prowadziłem całego projektu.",
+      "companyId": "co-000002",
+      "candidateName": "Maja Zielińska",
+      "stage": "reviewed",
+      "generatedAnswer": "",
+      "jobId": "pub-000001",
+      "sourceNotes": "",
+      "cv": "Przykład mojej pracy dotyczy obszaru: planowanie dostaw. Odpowiadałem za integrację modelu i analizę błędów. Nie prowadziłem całego projektu. Najpierw sprawdziliśmy mały fragment zadania. Dopiero później zdecydowaliśmy, co rozwijać. Mogę wyjaśnić swój zakres oraz pracę pozostałych osób. Nie wszystkie materiały można opublikować."
+    },
+    {
+      "nextStepDue": "2026-11-25",
+      "events": [
+        {
+          "note": "",
+          "at": "2026-06-14T11:58:10.000Z",
+          "stage": "submitted"
+        },
+        {
+          "note": "",
+          "at": "2026-07-05T11:58:10.000Z",
+          "stage": "reviewed"
+        }
+      ],
+      "score": 72,
+      "jobTitle": "AI Engineer",
+      "candidateId": "cand-003159",
+      "summary": "Przykładowe zgłoszenie z danych scenariusza Build.",
+      "id": "app-028169",
+      "answer": "Chodzi o projekt z obszaru: kontrola dokumentacji. Odpowiadałem za integrację modelu i analizę błędów. Nie prowadziłem całego projektu. Mogę omówić przykład i rolę pozostałych osób. Chcę znać pierwszy projekt oraz dostęp do danych. Zakres wdrożenia był szerszy niż moja praca. Materiały i termin rozpoczęcia musimy uzgodnić.",
+      "companyId": "co-000002",
+      "candidateName": "Oskar Nowak",
+      "stage": "reviewed",
+      "generatedAnswer": "",
+      "jobId": "pub-000001",
+      "sourceNotes": "",
+      "cv": "Przykład mojej pracy dotyczy obszaru: kontrola dokumentacji. Odpowiadałem za integrację modelu i analizę błędów. Nie prowadziłem całego projektu. Pracowaliśmy w kilkuosobowym zespole, równolegle z bieżącymi zadaniami operacyjnymi. Mogę wyjaśnić swój zakres oraz pracę pozostałych osób. Nie wszystkie materiały można opublikować."
+    },
+    {
+      "nextStepDue": "2026-12-04",
+      "events": [
+        {
+          "note": "",
+          "at": "2026-06-19T21:32:59.000Z",
+          "stage": "submitted"
+        },
+        {
+          "note": "",
+          "at": "2026-06-30T21:32:59.000Z",
+          "stage": "reviewed"
+        }
+      ],
+      "score": 70,
+      "jobTitle": "AI Engineer",
+      "candidateId": "cand-005592",
+      "summary": "Przykładowe zgłoszenie z danych scenariusza Build.",
+      "id": "app-028666",
+      "answer": "Chodzi o projekt z obszaru: obsługa zgłoszeń. Sprawdzałem gotowe odpowiedzi i opisywałem przypadki. Osobę od integracji wybierał kierownik. Mogę omówić przykład i rolę pozostałych osób. Chcę znać pierwszy projekt oraz dostęp do danych. Zakres wdrożenia był szerszy niż moja praca. Materiały i termin rozpoczęcia musimy uzgodnić.",
+      "companyId": "co-000002",
+      "candidateName": "Lena Wójcik",
+      "stage": "reviewed",
+      "generatedAnswer": "",
+      "jobId": "pub-000001",
+      "sourceNotes": "",
+      "cv": "Przykład mojej pracy dotyczy obszaru: obsługa zgłoszeń. Sprawdzałem gotowe odpowiedzi i opisywałem przypadki. Osobę od integracji wybierał kierownik. Projekt miał ograniczony zakres i trwał kilka iteracji. Część początkowych pomysłów odłożyliśmy. Mogę wyjaśnić swój zakres oraz pracę pozostałych osób. Nie wszystkie materiały można opublikować."
+    }
+  ],
+  "jobs": [
+    {
+      "title": "AI Engineer",
+      "description": "Remote, B2B, własny pipeline i ewaluacja.\n\nRozwijamy zespół zajmujący się zastosowaniami AI. Obszar pracy to dokumenty operacyjne.\n\nPierwszym zadaniem jest integracja modelu z istniejącą usługą. Obszar wdrożenia to dokumenty operacyjne. Odpowiadasz za własny komponent, ewaluację i jego utrzymanie. Pozostałe API rozwija drugi inżynier. Możesz wybierać sposób implementacji w ramach istniejącej usługi; zmiany architektury uzgadniamy z zespołem. Zespół ma osobę odpowiedzialną za operacje i inżyniera. Na razie nie powstaje osobny dział AI.\n\nTryb pracy: remote, umowa: B2B, miasto: Łódź. Widełki: 13500-17500 PLN (net_invoice).\n\nPotrzebujemy osoby, która potrafi rozmawiać o swojej dotychczasowej pracy, współpracować z innymi i wyjaśnić decyzje. Nie oczekujemy znajomości wszystkich narzędzi z rynku. Ważne jest rozsądne dobieranie sposobu pracy do problemu. Na rozmowie możemy wrócić do jednego z opisanych projektów. Materiały klientów mogą pozostać prywatne; opisz wtedy, jaki zakres można omówić. Zależy nam na współpracy i odpowiedzialności za uzgodnione zadania, nie na samej liczbie kursów lub nazw narzędzi w profilu.",
+      "seniority": "mid",
+      "category": "build",
+      "contract": "b2b",
+      "summary": "Remote, B2B, własny pipeline i ewaluacja.\n\nRozwijamy zespół zajmujący się zastosowaniami AI. Obszar pracy to dokumenty operacyjne.\n\nPierwszym zadaniem jest integracja modelu z",
+      "id": "pub-000001",
+      "verificationStatus": "unverified",
+      "companyId": "co-000002",
+      "slug": "pub-000001",
+      "locations": ["Łódź"],
+      "publishedAt": "2026-06-02T07:00:00.000Z",
+      "function": "engineering",
+      "remoteStatus": "remote",
+      "publicationStatus": "expired",
+      "expiryAt": "2026-07-02T07:00:00.000Z"
+    }
+  ],
+  "people": [
+    {
+      "cv": "",
+      "headline": "Rekruterka · Splot Operacje · scenariusz testowy",
+      "exampleScore": 0,
+      "id": "employer-splot",
+      "name": "Iga Kamińska",
+      "exampleSummary": "",
+      "role": "employer",
+      "companyId": "co-000002",
+      "location": "Łódź",
+      "bio": ""
+    },
+    {
+      "cv": "Przykład mojej pracy dotyczy obszaru: planowanie dostaw. Odpowiadałem za integrację modelu i analizę błędów. Nie prowadziłem całego projektu. Najpierw sprawdziliśmy mały fragment zadania. Dopiero później zdecydowaliśmy, co rozwijać. Mogę wyjaśnić swój zakres oraz pracę pozostałych osób. Nie wszystkie materiały można opublikować.",
+      "headline": "Kandydat Build · scenariusz testowy",
+      "exampleScore": 76,
+      "id": "cand-008793",
+      "name": "Maja Zielińska",
+      "exampleSummary": "Przykładowe zgłoszenie z danych scenariusza Build.",
+      "role": "candidate",
+      "location": "Łódź",
+      "bio": "Przykład mojej pracy dotyczy obszaru: planowanie dostaw. Odpowiadałem za integrację modelu i analizę błędów. Nie prowadziłem całego projektu. Najpierw sprawdziliśmy mały fragment zadania. Dopiero później zdecydowaliśmy, co rozwijać. Mogę wyjaśnić swój zakres oraz pracę pozostałych osób. Nie wszystkie materiały można opublikować."
+    },
+    {
+      "cv": "Przykład mojej pracy dotyczy obszaru: kontrola dokumentacji. Odpowiadałem za integrację modelu i analizę błędów. Nie prowadziłem całego projektu. Pracowaliśmy w kilkuosobowym zespole, równolegle z bieżącymi zadaniami operacyjnymi. Mogę wyjaśnić swój zakres oraz pracę pozostałych osób. Nie wszystkie materiały można opublikować.",
+      "headline": "Kandydat Build · scenariusz testowy",
+      "exampleScore": 72,
+      "id": "cand-003159",
+      "name": "Oskar Nowak",
+      "exampleSummary": "Przykładowe zgłoszenie z danych scenariusza Build.",
+      "role": "candidate",
+      "location": "Łódź",
+      "bio": "Przykład mojej pracy dotyczy obszaru: kontrola dokumentacji. Odpowiadałem za integrację modelu i analizę błędów. Nie prowadziłem całego projektu. Pracowaliśmy w kilkuosobowym zespole, równolegle z bieżącymi zadaniami operacyjnymi. Mogę wyjaśnić swój zakres oraz pracę pozostałych osób. Nie wszystkie materiały można opublikować."
+    },
+    {
+      "cv": "Przykład mojej pracy dotyczy obszaru: obsługa zgłoszeń. Sprawdzałem gotowe odpowiedzi i opisywałem przypadki. Osobę od integracji wybierał kierownik. Projekt miał ograniczony zakres i trwał kilka iteracji. Część początkowych pomysłów odłożyliśmy. Mogę wyjaśnić swój zakres oraz pracę pozostałych osób. Nie wszystkie materiały można opublikować.",
+      "headline": "Kandydat Build · scenariusz testowy",
+      "exampleScore": 70,
+      "id": "cand-005592",
+      "name": "Lena Wójcik",
+      "exampleSummary": "Przykładowe zgłoszenie z danych scenariusza Build.",
+      "role": "candidate",
+      "location": "Łódź",
+      "bio": "Przykład mojej pracy dotyczy obszaru: obsługa zgłoszeń. Sprawdzałem gotowe odpowiedzi i opisywałem przypadki. Osobę od integracji wybierał kierownik. Projekt miał ograniczony zakres i trwał kilka iteracji. Część początkowych pomysłów odłożyliśmy. Mogę wyjaśnić swój zakres oraz pracę pozostałych osób. Nie wszystkie materiały można opublikować."
+    }
+  ]
+}

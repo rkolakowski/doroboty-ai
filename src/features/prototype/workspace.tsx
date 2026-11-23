@@ -415,6 +415,7 @@ export function ApplicationsPage({ employer = false }: { employer?: boolean }) {
   const person = currentPerson(state)!;
   const [query, setQuery] = useState("");
   const [params] = useSearchParams();
+  const statusOnly = params.get("wariant") === "status";
   const applications = state.applications.filter(
     (x) =>
       (employer ? x.companyId === person.companyId : x.candidateId === person.id) &&
@@ -441,7 +442,7 @@ export function ApplicationsPage({ employer = false }: { employer?: boolean }) {
                 <div>
                   <Link
                     className="text-xl font-semibold text-[var(--gui-link)]"
-                    to={`${employer ? "/app/kandydaci" : "/app/aplikacje"}/${a.id}`}
+                    to={`${employer ? "/app/kandydaci" : "/app/aplikacje"}/${a.id}${statusOnly ? "?wariant=status" : ""}`}
                   >
                     {employer ? a.candidateName : a.jobTitle}
                   </Link>
@@ -451,6 +452,15 @@ export function ApplicationsPage({ employer = false }: { employer?: boolean }) {
                       : state.companies.find((x) => x.id === a.companyId)?.name}
                   </p>
                   <p>{stageLabels[a.stage]}</p>
+                  {employer && !statusOnly && a.nextStepDue && (
+                    <p>
+                      Termin działania pracodawcy:{" "}
+                      <time dateTime={a.nextStepDue}>
+                        {new Date(a.nextStepDue).toLocaleDateString("pl-PL", { timeZone: "UTC" })}
+                      </time>
+                      {" · termin testowy"}
+                    </p>
+                  )}
                 </div>
                 <MatchScore score={a.score} />
               </div>
