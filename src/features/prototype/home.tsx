@@ -40,7 +40,7 @@ export default function HomePage() {
               Dobra robota. Z AI w środku.
             </Badge>
             <h1 className="mt-6 max-w-4xl text-5xl leading-[var(--gui-leading-xxl)] font-semibold tracking-[var(--gui-tracking-xs)] sm:text-6xl lg:text-7xl">
-              Praca dla ludzi, którzy dowożą z AI.
+              Praca dla ludzi, którzy <mark>dowożą z AI</mark>.
             </h1>
             <p className="mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground sm:text-xl">
               Wyselekcjonowane role, w których AI jest częścią odpowiedzialności, decyzji i wyniku

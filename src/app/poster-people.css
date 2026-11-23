@@ -15,8 +15,8 @@ h6,
 }
 h1 {
   font-size: 52px;
-  line-height: 1.06;
-  letter-spacing: -1.5px;
+  line-height: 1.04;
+  letter-spacing: -0.07em;
 }
 h2 {
   font-size: 32px;
@@ -40,12 +40,16 @@ textarea:focus-visible {
   outline-offset: 4px;
 }
 .brand {
-  font-family: Arial, Helvetica, sans-serif;
-  font-weight: 700;
-  letter-spacing: -1.2px;
+  font-family: var(--font-body);
+  font-size: 1.3rem;
+  font-weight: 800;
+  letter-spacing: -0.055em;
+}
+.brand-domain {
+  color: var(--gui-accent);
 }
 .brand-mark {
-  border: 1px solid var(--foreground);
+  border: 1px solid var(--gui-edge);
   border-radius: 10px;
 }
 header:has([aria-label="Główna nawigacja"]) {
@@ -58,9 +62,9 @@ header:has([aria-label="Główna nawigacja"]) > div {
   padding-inline: 40px;
 }
 header a[aria-label="DoRoboty.ai — strona główna"] {
-  font-size: 28px;
-  font-weight: 700;
-  letter-spacing: -1.7px;
+  font-size: 1.3rem;
+  font-weight: 800;
+  letter-spacing: -0.055em;
   line-height: 1;
 }
 footer {
@@ -73,13 +77,25 @@ footer {
 }
 .home-intro h1 {
   font-size: 72px;
-  line-height: 1.02;
-  letter-spacing: -2.5px;
+  line-height: 1.04;
+  letter-spacing: -0.07em;
 }
 .people-art {
   width: 100%;
   max-width: 420px;
   justify-self: center;
+}
+.people-art,
+.pp-people-art,
+.pp-employer-copy > img {
+  filter: grayscale(1);
+}
+.home-intro mark {
+  background: var(--gui-highlight);
+  color: inherit;
+  border-radius: var(--gui-radius-s);
+  padding-inline: 0.13em;
+  box-decoration-break: clone;
 }
 .prototype-section {
   max-width: 1280px;
@@ -89,7 +105,7 @@ footer {
 .metric-card,
 .visitors-card,
 .success-panel {
-  border-radius: 24px;
+  border-radius: var(--gui-radius-m);
   background: #fff;
 }
 .prototype-panel h2 {
@@ -98,8 +114,8 @@ footer {
 .prototype-form {
   padding: 28px;
   background: #fff;
-  border: 1px solid var(--foreground);
-  border-radius: 24px;
+  border: 1px solid var(--gui-edge);
+  border-radius: var(--gui-radius-m);
   width: 100%;
   box-shadow: none;
 }
@@ -115,8 +131,8 @@ footer {
   font-weight: 600;
 }
 .prototype-notice {
-  background: #ffe0f7;
-  border: 1px solid var(--foreground);
+  background: var(--gui-color-1-transparent);
+  border: 1px solid var(--gui-edge);
   border-radius: 18px;
   line-height: 1.6;
 }
@@ -126,18 +142,19 @@ footer {
 }
 .nav-active,
 .nav-active:hover {
-  background: #181818;
+  background: var(--gui-accent);
   color: #fff;
 }
 .sidebar,
-.topbar {
+.topbar,
+.mobile-header {
   background: #fff;
 }
 .workspace-label {
   padding-block: 24px;
 }
 .workspace-avatar {
-  background: #ffe0f7;
+  background: var(--gui-color-1-transparent);
   border-radius: 10px;
   flex-shrink: 0;
 }
@@ -149,28 +166,32 @@ footer {
 }
 .page-heading {
   padding-block: 8px 20px;
-  border-bottom: 1px solid #d8d5d1;
+  border-bottom: 1px solid var(--gui-edge);
 }
 .page-heading h1 {
   font-size: 52px;
 }
 .native-select {
-  border: 1px solid var(--foreground);
+  border: 1px solid var(--gui-control-edge);
 }
 [data-slot="select-trigger"] {
-  box-shadow: var(--gui-edge-shadow);
+  box-shadow: var(--gui-control-shadow);
+}
+[data-slot="input"],
+[data-slot="textarea"] {
+  border-color: var(--gui-control-edge);
 }
 [data-slot="checkbox"] {
   border-radius: 5px;
-  box-shadow: var(--gui-edge-shadow);
+  box-shadow: var(--gui-control-shadow);
 }
 [data-slot="badge"] {
-  box-shadow: inset 0 0 0 1px #d8d5d1;
+  box-shadow: inset 0 0 0 1px var(--gui-edge);
   white-space: normal;
 }
 [data-slot="dialog-content"],
 [data-slot="alert-dialog-content"] {
-  border: 1px solid #181818;
+  border: 1px solid var(--gui-edge);
 }
 @media (max-width: 1100px) {
   .home-intro h1 {
@@ -190,9 +211,6 @@ footer {
   header:has([aria-label="Główna nawigacja"]) > div {
     height: 72px;
     padding-inline: 18px;
-  }
-  header a[aria-label="DoRoboty.ai — strona główna"] {
-    font-size: 25px;
   }
   .main-content {
     padding: 24px 18px;
@@ -252,7 +270,7 @@ footer {
   font-size: 13px;
   font-weight: 400;
   line-height: 1.5;
-  color: var(--gui-text);
+  color: var(--gui-link);
 }
 .back-link svg {
   width: 17px;

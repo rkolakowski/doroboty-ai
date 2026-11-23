@@ -123,14 +123,3 @@
       "ital" 0;
   }
 }
-
-@font-face {
-  font-family: "Geist Serif";
-  src: url("../../docs/design-system/agent-kit/assets/fonts/GeistSerif-Regular.woff2")
-    format("woff2");
-  font-weight: 400;
-  font-display: swap;
-}
-:root {
-  --font-timeless: "Timeless Grotesk", sans-serif;
-}

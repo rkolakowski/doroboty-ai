@@ -1,5 +1,7 @@
 # DoRoboty.ai design system — project instructions
 
+The portal uses the cobalt-and-lime visual theme from the parent project's DESIGN.md. Apply its host tokens for color, typography and contours. The Poster People kit below remains the reference for component anatomy, structure and interaction. See [portal theme rollout](../tasks/portal-theme.md).
+
 **Poster People v1.0.0 is the required visual reference for new and changed screens.** It is the accepted rounded, illustrated listing/offer system with Geist Serif headings. Use this directory before choosing page composition, typography, color or component treatment. The previous theme guidance has been removed at Wojtek's request.
 
 This directory contains the complete immutable 67-file v1 agent kit and the receiving project's active integration guidance. The React application now has a host adaptation, mapped in [IMPLEMENTATION.md](IMPLEMENTATION.md). Treat current code as implementation to verify, not a second visual authority or proof of full acceptance. Apply the reference within the user's task scope; installing or updating guidance alone does not initiate a redesign.

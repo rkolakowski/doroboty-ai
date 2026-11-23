@@ -1,6 +1,6 @@
 # Runtime typography
 
-The application loads local Geist Serif Regular 400 from `docs/design-system/agent-kit/assets/fonts/GeistSerif-Regular.woff2` through Vite. Its SIL OFL license remains beside the font. All headings use this weight without synthetic bold. Body and controls use Arial/Helvetica/system sans; they make no remote font requests.
+The portal uses the `system-ui, sans-serif` stack for headings, body and controls. The reference kit retains its local Geist Serif Regular font and license for the reference examples.
 
 ## Retained historical assets
 
@@ -10,7 +10,7 @@ The application loads local Geist Serif Regular 400 from `docs/design-system/age
 [Timeless Type](https://timeless.co/type) website. The vendor describes the Timeless family as
 free for personal and commercial use.
 
-The previous runtime used the Grotesk cut with `STYL` and `ital` pinned to `0`. These are existing implementation assets, not the target for new headings. Follow the accepted [design-system integration guide](../../../docs/design-system/README.md), which supplies local Geist Serif Regular and its license.
+The previous runtime used the Grotesk cut with `STYL` and `ital` pinned to `0`.
 
 ## Web-optimized Grotesk
 

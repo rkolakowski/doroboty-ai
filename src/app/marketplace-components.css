@@ -1,21 +1,19 @@
-/* Host-owned namespaced adaptation of Poster People 1.0.0; see immutable kit provenance. */
+/* Marketplace components use the same host theme as the workspaces. */
 :root {
   color-scheme: light;
-  --pp-paper: #f4f4f0;
-  --pp-surface: #fff;
-  --pp-ink: #181818;
-  --pp-muted: #5e5a5c;
-  --pp-line: #d8d5d1;
-  --pp-action: #ff90e8;
-  --pp-action-hover: #ffacef;
-  --pp-fact: #ffe0f7;
-  --pp-yellow: #ffe45b;
-  --pp-surface-hover: #fffefa;
-  --pp-radius: 18px;
+  --pp-paper: var(--gui-canvas);
+  --pp-surface: var(--gui-surface);
+  --pp-ink: var(--gui-text);
+  --pp-muted: var(--gui-text-muted);
+  --pp-line: var(--gui-edge);
+  --pp-action: var(--gui-accent);
+  --pp-fact: var(--gui-color-1-transparent);
+  --pp-surface-hover: var(--gui-canvas);
+  --pp-radius: var(--gui-radius-s);
   --pp-radius-small: 10px;
-  --pp-radius-large: 24px;
-  --pp-font-heading: "Geist Serif", Georgia, serif;
-  --pp-font: Arial, Helvetica, system-ui, sans-serif;
+  --pp-radius-large: var(--gui-radius-m);
+  --pp-font-heading: var(--font-display);
+  --pp-font: var(--font-body);
 }
 
 /* Extracted from the accepted prototype. See CHANGES.md and provenance.json. */
@@ -33,7 +31,7 @@
 .pp-search-form {
   display: grid;
   grid-template-columns: minmax(0, 1fr) 250px 180px;
-  border: 1px solid var(--pp-ink);
+  border: 1px solid var(--pp-line);
   border-radius: var(--pp-radius-large);
   background: var(--pp-surface);
   padding: 7px;
@@ -85,7 +83,7 @@
   padding: 0 35px 0 48px;
   font-size: 14px;
   cursor: pointer;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.pp-w3.pp-org/2000/svg' width='16' height='16' fill='none' stroke='%23181818' stroke-width='1.5'%3E%3Cpath d='m4 6 4 4 4-4'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' stroke='%23252c36' stroke-width='1.5'%3E%3Cpath d='m4 6 4 4 4-4'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: right 16px center;
 }
@@ -102,7 +100,7 @@
 }
 .pp-category-tab {
   background: transparent;
-  border: 1px solid var(--pp-ink);
+  border: 1px solid var(--pp-line);
   border-radius: var(--pp-radius);
   min-height: 56px;
   padding: 12px 18px;
@@ -125,7 +123,7 @@
   color: var(--pp-muted);
 }
 .pp-category-tab.pp-selected {
-  background: var(--pp-ink);
+  background: var(--pp-action);
   color: white;
 }
 .pp-category-tab.pp-selected small {
@@ -139,7 +137,7 @@
   opacity: 0.8;
 }
 .pp-filter-panel {
-  border: 1px solid var(--pp-ink);
+  border: 1px solid var(--pp-line);
   border-radius: var(--pp-radius);
   background: var(--pp-surface);
   overflow: hidden;
@@ -149,7 +147,7 @@
   align-items: center;
   justify-content: space-between;
   padding: 20px;
-  border-bottom: 1px solid var(--pp-ink);
+  border-bottom: 1px solid var(--pp-line);
   gap: 10px;
 }
 .pp-filter-heading h2 {
@@ -195,7 +193,7 @@
   clear: both;
 }
 .pp-filter-group input[type="checkbox"] {
-  accent-color: var(--pp-ink);
+  accent-color: var(--pp-action);
   width: 17px;
   height: 17px;
   margin: 0;
@@ -212,7 +210,7 @@
   display: grid;
   grid-template-columns: 66px minmax(0, 1fr) 236px;
   background: var(--pp-surface);
-  border: 1px solid var(--pp-ink);
+  border: 1px solid var(--pp-line);
   border-radius: var(--pp-radius-large);
   overflow: hidden;
   position: relative;
@@ -302,7 +300,7 @@
   background: var(--pp-surface);
 }
 .pp-job-side {
-  border-left: 1px solid var(--pp-ink);
+  border-left: 1px solid var(--pp-line);
   padding: 20px 19px 18px;
   display: flex;
   flex-direction: column;
@@ -397,7 +395,7 @@
   align-items: center;
   gap: 8px;
   padding: 5px 8px;
-  border: 1px solid var(--pp-ink);
+  border: 1px solid var(--pp-line);
   border-radius: var(--pp-radius-small);
   font-size: 11px;
   background: var(--pp-surface);
@@ -422,7 +420,7 @@
   margin-right: auto;
 }
 .pp-page-button {
-  border: 1px solid var(--pp-ink);
+  border: 1px solid var(--pp-line);
   border-radius: var(--pp-radius);
   min-width: 36px;
   height: 36px;
@@ -436,12 +434,12 @@
   height: 16px;
 }
 .pp-page-button[aria-current="page"] {
-  background: var(--pp-ink);
+  background: var(--pp-action);
   color: white;
 }
 .pp-empty-state {
   text-align: center;
-  border: 1px solid var(--pp-ink);
+  border: 1px solid var(--pp-line);
   border-radius: var(--pp-radius);
   background: var(--pp-surface);
   padding: 65px 25px;
@@ -451,7 +449,7 @@
   place-items: center;
   width: 63px;
   height: 63px;
-  border: 1px solid var(--pp-ink);
+  border: 1px solid var(--pp-line);
   border-radius: 50%;
   background: var(--pp-fact);
   margin: 0 auto 22px;
@@ -473,7 +471,7 @@
 }
 
 .pp-dialog {
-  border: 1px solid var(--pp-ink);
+  border: 1px solid var(--pp-line);
   border-radius: var(--pp-radius-large);
   padding: 0;
   color: var(--pp-ink);
@@ -490,7 +488,7 @@
   justify-content: space-between;
   gap: 20px;
   padding: 25px;
-  border-bottom: 1px solid var(--pp-ink);
+  border-bottom: 1px solid var(--pp-line);
   background: white;
 }
 .pp-dialog-heading h2 {
@@ -527,7 +525,7 @@
   bottom: 0;
   padding: 15px 24px max(15px, env(safe-area-inset-bottom));
   background: white;
-  border-top: 1px solid var(--pp-ink);
+  border-top: 1px solid var(--pp-line);
 }
 @media (max-width: 1100px) {
   .pp-category-tab {
@@ -579,7 +577,7 @@
   }
   .pp-filter-button > span:last-child:not(:first-child) {
     font-size: 10px;
-    background: var(--pp-ink);
+    background: var(--pp-action);
     color: white;
     border-radius: var(--pp-radius-small);
     min-width: 17px;
@@ -747,7 +745,7 @@
   .pp-job-side {
     grid-column: 1/-1;
     border-left: 0;
-    border-top: 1px solid var(--pp-ink);
+    border-top: 1px solid var(--pp-line);
     padding: 13px 15px;
     display: grid;
     grid-template-columns: minmax(0, 1fr) auto;
@@ -854,7 +852,7 @@
   position: relative;
 }
 .pp-filter-group input[type="checkbox"]:checked {
-  background: var(--pp-ink);
+  background: var(--pp-action);
   border-color: var(--pp-ink);
 }
 .pp-filter-group input[type="checkbox"]:checked:after {

@@ -127,7 +127,9 @@ export function Shell() {
           <div className="mobile-header">
             <Link to="/" className="brand">
               <BrandMark />
-              DoRoboty.ai
+              <span>
+                DoRoboty<span className="brand-domain">.ai</span>
+              </span>
             </Link>
             <Button
               aria-label={menuAt === pathname ? "Zamknij menu" : "Otwórz menu"}
@@ -148,7 +150,9 @@ export function Shell() {
           >
             <Link className="brand" to="/">
               <BrandMark />
-              DoRoboty.ai
+              <span>
+                DoRoboty<span className="brand-domain">.ai</span>
+              </span>
             </Link>
             <div className="workspace-label">
               <span className="workspace-avatar">{person.name[0]}</span>
@@ -212,7 +216,9 @@ export function Shell() {
                 aria-label="DoRoboty.ai — strona główna"
               >
                 <BrandMark />
-                <span>DoRoboty.ai</span>
+                <span>
+                  DoRoboty<span className="brand-domain">.ai</span>
+                </span>
               </Link>
               <nav aria-label="Główna nawigacja" className="flex items-center gap-2 sm:gap-5">
                 {navigation.map((item) => (

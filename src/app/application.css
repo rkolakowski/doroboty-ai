@@ -296,6 +296,6 @@
   min-width: 161px;
 }
 .application-actions .application-send:disabled {
-  background: var(--gui-color-1);
+  background: var(--gui-highlight);
   color: var(--gui-text);
 }

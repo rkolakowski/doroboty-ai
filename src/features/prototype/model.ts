@@ -1,6 +1,7 @@
 import { z } from "zod";
 import marketplace from "./data/marketplace.json" with { type: "json" };
 import people from "./data/people.json" with { type: "json" };
+import buildScenario from "./data/build-scenario.json" with { type: "json" };
 import type { JobWithCompany } from "@/features/jobs/types";
 
 const id = z
@@ -118,6 +119,7 @@ const applicationSchema = z.object({
   score: z.number().int().min(0).max(100),
   summary: text,
   stage: z.enum(stages),
+  nextStepDue: z.iso.date().optional(),
   events: z
     .array(z.object({ stage: z.enum(stages), at: z.iso.datetime(), note: text }))
     .min(1)
@@ -211,9 +213,25 @@ export type Action =
       consent: boolean;
     }
   | { type: "stage"; applicationId: string; stage: Stage; note: string }
+  | { type: "next_step_due"; applicationId: string; due: string }
   | { type: "withdraw"; applicationId: string }
   | { type: "publish"; job: z.infer<typeof jobSchema> }
   | { type: "company"; name: string; description: string };
+
+export function addBuildScenario(state: State): State {
+  const merge = <T extends { id: string }>(current: T[], examples: { id: string }[]) => [
+    ...current,
+    ...examples.filter((example) => !current.some(({ id }) => id === example.id)),
+  ];
+  const result = stateSchema.safeParse({
+    ...state,
+    companies: merge(state.companies, buildScenario.companies),
+    jobs: merge(state.jobs, buildScenario.jobs),
+    people: merge(state.people, buildScenario.people),
+    applications: merge(state.applications, buildScenario.applications),
+  });
+  return result.success ? result.data : state;
+}
 
 export function initialState(): State {
   const state = stateSchema.parse({
@@ -244,7 +262,7 @@ export function initialState(): State {
     stage: "submitted",
     events: [{ stage: "submitted", at: "2026-11-02T09:00:00.000Z", note: "" }],
   });
-  return stateSchema.parse(state);
+  return addBuildScenario(state);
 }
 export function publishedJobs(state: State): JobWithCompany[] {
   return state.jobs
@@ -317,6 +335,16 @@ export function transition(
       }),
     );
     s.drafts = s.drafts.filter((x) => !(x.candidateId === p.id && x.jobId === job.id));
+  } else if (action.type === "next_step_due") {
+    const p = employer();
+    const application = s.applications.find((x) => x.id === action.applicationId);
+    if (
+      !application ||
+      application.companyId !== p.companyId ||
+      !nextStages[application.stage].length
+    )
+      return fail("Nie można zmienić terminu tej aplikacji.");
+    application.nextStepDue = z.iso.date().parse(action.due);
   } else if (action.type === "stage" || action.type === "withdraw") {
     const application = s.applications.find((x) => x.id === action.applicationId);
     if (!application) return fail("Nie znaleziono aplikacji.");
@@ -334,6 +362,7 @@ export function transition(
         fail("Ta zmiana etapu nie jest dostępna.");
     }
     application.stage = stage;
+    delete application.nextStepDue;
     application.events.push({ stage, at: now, note: action.type === "stage" ? action.note : "" });
   } else if (action.type === "publish") {
     const p = employer();

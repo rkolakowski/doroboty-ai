@@ -1,10 +1,12 @@
 import type { ReactNode, Ref } from "react";
+import { useSearchParams } from "react-router";
 import { BackLink } from "@/components/back-link";
 import { ProcessTimeline } from "@/components/process-timeline";
 import { RecordSheet } from "@/components/record-sheet";
 import { CvAttachment } from "./cv-attachment";
 import { MatchScore } from "./match-score";
 import { stageLabels, type Application, type Stage } from "./model";
+import { NextStep } from "./next-step";
 
 type RecordEvent = { stage: Stage; at: string; note?: string };
 const dateFormat = new Intl.DateTimeFormat("pl-PL", {
@@ -24,7 +26,16 @@ export function ApplicationRecord({
 }: {
   application: Pick<
     Application,
-    "candidateId" | "candidateName" | "jobTitle" | "stage" | "answer" | "cv" | "score" | "summary"
+    | "id"
+    | "candidateId"
+    | "candidateName"
+    | "jobTitle"
+    | "stage"
+    | "answer"
+    | "cv"
+    | "score"
+    | "summary"
+    | "nextStepDue"
   >;
   companyName: string;
   audience: "candidate" | "employer";
@@ -34,14 +45,33 @@ export function ApplicationRecord({
   footer?: ReactNode;
 }) {
   const candidate = audience === "candidate";
+  const [params] = useSearchParams();
+  const statusOnly = params.get("wariant") === "status";
   const title = candidate ? application.jobTitle : application.candidateName;
   const context = candidate ? application.candidateName : application.jobTitle;
   const submitted = history[0];
+  const timeline = (
+    <section aria-labelledby="process-heading">
+      <h2 id="process-heading" tabIndex={-1}>
+        Historia procesu
+      </h2>
+      <ProcessTimeline
+        items={history.map((event, index) => ({
+          id: `${index}-${event.at}`,
+          title: event.stage === "reviewed" ? "Aplikacja przejrzana" : stageLabels[event.stage],
+          dateTime: event.at,
+          content: event.note || undefined,
+        }))}
+      />
+    </section>
+  );
   return (
-    <article className="recruiting-record">
+    <article className="recruiting-record next-step-record">
       <header className="recruiting-header">
         <nav aria-label="Ścieżka nawigacji" className="record-breadcrumb">
-          <BackLink to={candidate ? "/app/aplikacje" : "/app/kandydaci"}>
+          <BackLink
+            to={`${candidate ? "/app/aplikacje" : "/app/kandydaci"}${statusOnly ? "?wariant=status" : ""}`}
+          >
             {candidate ? "Moje aplikacje" : "Kandydaci"}
           </BackLink>
           <span aria-hidden="true">/</span>
@@ -64,6 +94,14 @@ export function ApplicationRecord({
           )}
         </div>
       </header>
+      {!statusOnly && (
+        <NextStep
+          key={`${application.id}-${application.stage}`}
+          application={application}
+          candidate={candidate}
+        />
+      )}
+      {candidate && <div className="next-step-history">{timeline}</div>}
       <div className="recruiting-layout">
         <RecordSheet
           label={candidate ? "Twoja wysłana aplikacja" : "Materiały kandydata"}
@@ -99,17 +137,7 @@ export function ApplicationRecord({
           {children}
         </RecordSheet>
         <aside className="recruiting-margin" aria-label="Historia i podsumowanie">
-          <section aria-labelledby="process-heading">
-            <h2 id="process-heading">Historia procesu</h2>
-            <ProcessTimeline
-              items={history.map((event, index) => ({
-                id: `${index}-${event.at}`,
-                title: stageLabels[event.stage],
-                dateTime: event.at,
-                content: event.note || undefined,
-              }))}
-            />
-          </section>
+          {!candidate && timeline}
           <section className="record-summary" aria-labelledby="summary-heading">
             <h2 id="summary-heading">Podsumowanie</h2>
             <p>{application.summary}</p>
