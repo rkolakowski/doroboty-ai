@@ -95,6 +95,174 @@
       "jobId": "pub-000001",
       "sourceNotes": "",
       "cv": "Przykład mojej pracy dotyczy obszaru: obsługa zgłoszeń. Sprawdzałem gotowe odpowiedzi i opisywałem przypadki. Osobę od integracji wybierał kierownik. Projekt miał ograniczony zakres i trwał kilka iteracji. Część początkowych pomysłów odłożyliśmy. Mogę wyjaśnić swój zakres oraz pracę pozostałych osób. Nie wszystkie materiały można opublikować."
+    },
+    {
+      "id": "contribution-a-alicja",
+      "candidateId": "candidate-contribution-alicja",
+      "companyId": "co-000002",
+      "jobId": "build-contribution-role",
+      "jobTitle": "AI Engineer – ewaluacja wdrożeń",
+      "candidateName": "Alicja Lis",
+      "answer": "Na zestawie 160 zgłoszeń zauważyłam 14 błędnych przekierowań reklamacji. Zdecydowałam o wstrzymaniu wersji i sama zablokowałam etap publikacji w CI. Po zmianie reguł ponowiłam testy i dopuściłam wersję z trzema błędnymi przekierowaniami.",
+      "contributionQuestion": "Opisz podobne wdrożenie. Co zrobiłeś osobiście, jaką decyzję podjąłeś i jaki był rezultat?",
+      "cv": "Profil zawodowy\nInżynier AI, 4 lata doświadczenia. Python, ewaluacja modeli i wdrożenia aplikacji.\n\nAsystent obsługi zamówień\nProjekt zespołowy: wdrożenie asystenta do klasyfikowania zgłoszeń o zamówieniach. Zakres zespołu: testy jakości, raportowanie i uruchomienie pilotażu. W raporcie odnotowano mniej błędnych przekierowań.",
+      "score": 72,
+      "summary": "Zgłoszenie na rolę związaną z ewaluacją wdrożeń AI.",
+      "sourceNotes": "",
+      "generatedAnswer": "",
+      "stage": "reviewed",
+      "events": [
+        {
+          "stage": "submitted",
+          "at": "2026-11-20T09:00:00.000Z",
+          "note": ""
+        },
+        {
+          "stage": "reviewed",
+          "at": "2026-11-22T09:00:00.000Z",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "id": "contribution-a-dawid",
+      "candidateId": "candidate-contribution-dawid",
+      "companyId": "co-000002",
+      "jobId": "build-contribution-role",
+      "jobTitle": "AI Engineer – ewaluacja wdrożeń",
+      "candidateName": "Dawid Bąk",
+      "answer": "Wspólnie z analityczką przygotowałem 120 przypadków testowych i policzyłem odsetek trafnych odpowiedzi. Przedstawiłem porównanie dwóch wersji. Liderka wybrała wersję do pilotażu, a inżynier platformy uruchomił ją dla jednego zespołu.",
+      "contributionQuestion": "Opisz podobne wdrożenie. Co zrobiłeś osobiście, jaką decyzję podjąłeś i jaki był rezultat?",
+      "cv": "Profil zawodowy\nInżynier AI, 4 lata doświadczenia. Python, ewaluacja modeli i wdrożenia aplikacji.\n\nAsystent centrum pomocy\nProjekt zespołowy: wdrożenie asystenta do obsługi pytań o zwroty. Zakres zespołu: przygotowanie testów, porównanie wersji i decyzja o pilotażu. Pilotaż objął jeden zespół wsparcia.",
+      "score": 72,
+      "summary": "Zgłoszenie na rolę związaną z ewaluacją wdrożeń AI.",
+      "sourceNotes": "",
+      "generatedAnswer": "",
+      "stage": "reviewed",
+      "events": [
+        {
+          "stage": "submitted",
+          "at": "2026-11-20T09:00:00.000Z",
+          "note": ""
+        },
+        {
+          "stage": "reviewed",
+          "at": "2026-11-22T09:00:00.000Z",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "id": "contribution-a-iwona",
+      "candidateId": "candidate-contribution-iwona",
+      "companyId": "co-000002",
+      "jobId": "build-contribution-role",
+      "jobTitle": "AI Engineer – ewaluacja wdrożeń",
+      "candidateName": "Iwona Mazur",
+      "answer": "Ocenialiśmy faktury o różnym układzie, porównaliśmy dwie wersje i ustaliliśmy plan pilotażu. Po kilku iteracjach błędów było mniej. Wspierałam pracę zespołu od testów po rozszerzenie zakresu.",
+      "contributionQuestion": "Opisz podobne wdrożenie. Co zrobiłeś osobiście, jaką decyzję podjąłeś i jaki był rezultat?",
+      "cv": "Profil zawodowy\nInżynier AI, 4 lata doświadczenia. Python, ewaluacja modeli i wdrożenia aplikacji.\n\nAsystent faktur\nProjekt zespołowy: pilotaż asystenta do odczytu faktur. W projekcie wykorzystano próbki faktur i porównanie błędów kolejnych wersji. Po pilotażu rozszerzono zakres.",
+      "score": 72,
+      "summary": "Zgłoszenie na rolę związaną z ewaluacją wdrożeń AI.",
+      "sourceNotes": "",
+      "generatedAnswer": "",
+      "stage": "reviewed",
+      "events": [
+        {
+          "stage": "submitted",
+          "at": "2026-11-20T09:00:00.000Z",
+          "note": ""
+        },
+        {
+          "stage": "reviewed",
+          "at": "2026-11-22T09:00:00.000Z",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "id": "contribution-b-karol",
+      "candidateId": "candidate-contribution-karol",
+      "companyId": "co-000002",
+      "jobId": "build-contribution-role",
+      "jobTitle": "AI Engineer – ewaluacja wdrożeń",
+      "candidateName": "Karol Wrona",
+      "answer": "Na próbie 150 zgłoszeń wykryłem 12 błędnych przypisań pilnych spraw. Zdecydowałem o wstrzymaniu wersji i sam zmieniłem konfigurację wdrożenia, aby nie kierowała ruchu do modelu. Po poprawce ponowiłem test i dopuściłem wersję z dwoma błędnymi przypisaniami.",
+      "contributionQuestion": "Opisz podobne wdrożenie. Co zrobiłeś osobiście, jaką decyzję podjąłeś i jaki był rezultat?",
+      "cv": "Profil zawodowy\nInżynier AI, 4 lata doświadczenia. Python, ewaluacja modeli i wdrożenia aplikacji.\n\nAsystent zgłoszeń serwisowych\nProjekt zespołowy: wdrożenie asystenta do klasyfikacji zgłoszeń serwisowych. Zakres zespołu: testy jakości, raportowanie i uruchomienie pilotażu. W raporcie odnotowano mniej błędnych przypisań.",
+      "score": 72,
+      "summary": "Zgłoszenie na rolę związaną z ewaluacją wdrożeń AI.",
+      "sourceNotes": "",
+      "generatedAnswer": "",
+      "stage": "reviewed",
+      "events": [
+        {
+          "stage": "submitted",
+          "at": "2026-11-20T09:00:00.000Z",
+          "note": ""
+        },
+        {
+          "stage": "reviewed",
+          "at": "2026-11-22T09:00:00.000Z",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "id": "contribution-b-natalia",
+      "candidateId": "candidate-contribution-natalia",
+      "companyId": "co-000002",
+      "jobId": "build-contribution-role",
+      "jobTitle": "AI Engineer – ewaluacja wdrożeń",
+      "candidateName": "Natalia Król",
+      "answer": "Wspólnie z inżynierką przygotowałam 125 przykładów i obliczyłam trafność dwóch wersji. Wyniki przekazałam właścicielowi wdrożenia. To on wybrał wersję, a osoba z platformy uruchomiła ją w jednym zespole.",
+      "contributionQuestion": "Opisz podobne wdrożenie. Co zrobiłeś osobiście, jaką decyzję podjąłeś i jaki był rezultat?",
+      "cv": "Profil zawodowy\nInżynier AI, 4 lata doświadczenia. Python, ewaluacja modeli i wdrożenia aplikacji.\n\nAsystent reklamacyjny\nProjekt zespołowy: wdrożenie asystenta do odpowiedzi na reklamacje. Zakres zespołu: przygotowanie testów, porównanie wersji i decyzja o pilotażu. Pilotaż objął jeden zespół wsparcia.",
+      "score": 72,
+      "summary": "Zgłoszenie na rolę związaną z ewaluacją wdrożeń AI.",
+      "sourceNotes": "",
+      "generatedAnswer": "",
+      "stage": "reviewed",
+      "events": [
+        {
+          "stage": "submitted",
+          "at": "2026-11-20T09:00:00.000Z",
+          "note": ""
+        },
+        {
+          "stage": "reviewed",
+          "at": "2026-11-22T09:00:00.000Z",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "id": "contribution-b-piotr",
+      "candidateId": "candidate-contribution-piotr",
+      "companyId": "co-000002",
+      "jobId": "build-contribution-role",
+      "jobTitle": "AI Engineer – ewaluacja wdrożeń",
+      "candidateName": "Piotr Gajda",
+      "answer": "Porównywaliśmy kolejne wersje i omawialiśmy, które dokumenty powinny wejść do pilotażu. Rozszerzyliśmy zakres, gdy jakość wzrosła. Byłem zaangażowany w projekt na kilku etapach.",
+      "contributionQuestion": "Opisz podobne wdrożenie. Co zrobiłeś osobiście, jaką decyzję podjąłeś i jaki był rezultat?",
+      "cv": "Profil zawodowy\nInżynier AI, 4 lata doświadczenia. Python, ewaluacja modeli i wdrożenia aplikacji.\n\nAsystent dokumentów\nProjekt zespołowy: pilotaż asystenta do analizy dokumentów dostawców. W projekcie porównywano błędy kolejnych wersji na próbkach. Po pilotażu rozszerzono zakres.",
+      "score": 72,
+      "summary": "Zgłoszenie na rolę związaną z ewaluacją wdrożeń AI.",
+      "sourceNotes": "",
+      "generatedAnswer": "",
+      "stage": "reviewed",
+      "events": [
+        {
+          "stage": "submitted",
+          "at": "2026-11-20T09:00:00.000Z",
+          "note": ""
+        },
+        {
+          "stage": "reviewed",
+          "at": "2026-11-22T09:00:00.000Z",
+          "note": ""
+        }
+      ]
     }
   ],
   "jobs": [
@@ -115,6 +283,41 @@
       "remoteStatus": "remote",
       "publicationStatus": "expired",
       "expiryAt": "2026-07-02T07:00:00.000Z"
+    },
+    {
+      "id": "build-contribution-role",
+      "slug": "ai-engineer-ewaluacja-wdrozen",
+      "companyId": "co-000002",
+      "title": "AI Engineer – ewaluacja wdrożeń",
+      "contributionQuestion": "Opisz podobne wdrożenie. Co zrobiłeś osobiście, jaką decyzję podjąłeś i jaki był rezultat?",
+      "applicationQuestions": [
+        {
+          "kind": "screening",
+          "prompt": "Jak długo pracujesz przy projektach wykorzystujących AI?",
+          "options": [
+            "Krócej niż rok",
+            "Od roku do mniej niż 3 lat",
+            "Od 3 do mniej niż 5 lat",
+            "5 lat lub dłużej"
+          ]
+        },
+        {
+          "kind": "contribution",
+          "prompt": "Opisz podobne wdrożenie. Co zrobiłeś osobiście, jaką decyzję podjąłeś i jaki był rezultat?"
+        }
+      ],
+      "summary": "Rozwijaj ewaluację systemów AI i odpowiadaj za decyzje o dopuszczeniu wersji do wdrożenia.",
+      "description": "Zbudujesz zestaw testów dla asystenta AI używanego w obsłudze zgłoszeń. Porównasz wyniki kolejnych wersji, ustalisz warunki dopuszczenia i podejmiesz decyzję o uruchomieniu albo wstrzymaniu wersji. Szukamy osoby z doświadczeniem w samodzielnym podejmowaniu i wdrażaniu takich decyzji na podstawie ewaluacji.",
+      "category": "build",
+      "function": "engineering",
+      "remoteStatus": "remote",
+      "locations": ["Łódź"],
+      "seniority": "mid",
+      "contract": "b2b",
+      "publicationStatus": "published",
+      "publishedAt": "2026-09-01T09:00:00.000Z",
+      "expiryAt": "2027-01-31T17:00:00.000Z",
+      "verificationStatus": "unverified"
     }
   ],
   "people": [
@@ -162,6 +365,72 @@
       "role": "candidate",
       "location": "Łódź",
       "bio": "Przykład mojej pracy dotyczy obszaru: obsługa zgłoszeń. Sprawdzałem gotowe odpowiedzi i opisywałem przypadki. Osobę od integracji wybierał kierownik. Projekt miał ograniczony zakres i trwał kilka iteracji. Część początkowych pomysłów odłożyliśmy. Mogę wyjaśnić swój zakres oraz pracę pozostałych osób. Nie wszystkie materiały można opublikować."
+    },
+    {
+      "id": "candidate-contribution-alicja",
+      "name": "Alicja Lis",
+      "headline": "Inżynier AI · Build",
+      "location": "Łódź",
+      "bio": "Projekt zespołowy: wdrożenie asystenta do klasyfikowania zgłoszeń o zamówieniach. Zakres zespołu: testy jakości, raportowanie i uruchomienie pilotażu. W raporcie odnotowano mniej błędnych przekierowań.",
+      "role": "candidate",
+      "cv": "Profil zawodowy\nInżynier AI, 4 lata doświadczenia. Python, ewaluacja modeli i wdrożenia aplikacji.\n\nAsystent obsługi zamówień\nProjekt zespołowy: wdrożenie asystenta do klasyfikowania zgłoszeń o zamówieniach. Zakres zespołu: testy jakości, raportowanie i uruchomienie pilotażu. W raporcie odnotowano mniej błędnych przekierowań.",
+      "exampleScore": 72,
+      "exampleSummary": "Zgłoszenie na rolę związaną z ewaluacją wdrożeń AI."
+    },
+    {
+      "id": "candidate-contribution-dawid",
+      "name": "Dawid Bąk",
+      "headline": "Inżynier AI · Build",
+      "location": "Łódź",
+      "bio": "Projekt zespołowy: wdrożenie asystenta do obsługi pytań o zwroty. Zakres zespołu: przygotowanie testów, porównanie wersji i decyzja o pilotażu. Pilotaż objął jeden zespół wsparcia.",
+      "role": "candidate",
+      "cv": "Profil zawodowy\nInżynier AI, 4 lata doświadczenia. Python, ewaluacja modeli i wdrożenia aplikacji.\n\nAsystent centrum pomocy\nProjekt zespołowy: wdrożenie asystenta do obsługi pytań o zwroty. Zakres zespołu: przygotowanie testów, porównanie wersji i decyzja o pilotażu. Pilotaż objął jeden zespół wsparcia.",
+      "exampleScore": 72,
+      "exampleSummary": "Zgłoszenie na rolę związaną z ewaluacją wdrożeń AI."
+    },
+    {
+      "id": "candidate-contribution-iwona",
+      "name": "Iwona Mazur",
+      "headline": "Inżynier AI · Build",
+      "location": "Łódź",
+      "bio": "Projekt zespołowy: pilotaż asystenta do odczytu faktur. W projekcie wykorzystano próbki faktur i porównanie błędów kolejnych wersji. Po pilotażu rozszerzono zakres.",
+      "role": "candidate",
+      "cv": "Profil zawodowy\nInżynier AI, 4 lata doświadczenia. Python, ewaluacja modeli i wdrożenia aplikacji.\n\nAsystent faktur\nProjekt zespołowy: pilotaż asystenta do odczytu faktur. W projekcie wykorzystano próbki faktur i porównanie błędów kolejnych wersji. Po pilotażu rozszerzono zakres.",
+      "exampleScore": 72,
+      "exampleSummary": "Zgłoszenie na rolę związaną z ewaluacją wdrożeń AI."
+    },
+    {
+      "id": "candidate-contribution-karol",
+      "name": "Karol Wrona",
+      "headline": "Inżynier AI · Build",
+      "location": "Łódź",
+      "bio": "Projekt zespołowy: wdrożenie asystenta do klasyfikacji zgłoszeń serwisowych. Zakres zespołu: testy jakości, raportowanie i uruchomienie pilotażu. W raporcie odnotowano mniej błędnych przypisań.",
+      "role": "candidate",
+      "cv": "Profil zawodowy\nInżynier AI, 4 lata doświadczenia. Python, ewaluacja modeli i wdrożenia aplikacji.\n\nAsystent zgłoszeń serwisowych\nProjekt zespołowy: wdrożenie asystenta do klasyfikacji zgłoszeń serwisowych. Zakres zespołu: testy jakości, raportowanie i uruchomienie pilotażu. W raporcie odnotowano mniej błędnych przypisań.",
+      "exampleScore": 72,
+      "exampleSummary": "Zgłoszenie na rolę związaną z ewaluacją wdrożeń AI."
+    },
+    {
+      "id": "candidate-contribution-natalia",
+      "name": "Natalia Król",
+      "headline": "Inżynier AI · Build",
+      "location": "Łódź",
+      "bio": "Projekt zespołowy: wdrożenie asystenta do odpowiedzi na reklamacje. Zakres zespołu: przygotowanie testów, porównanie wersji i decyzja o pilotażu. Pilotaż objął jeden zespół wsparcia.",
+      "role": "candidate",
+      "cv": "Profil zawodowy\nInżynier AI, 4 lata doświadczenia. Python, ewaluacja modeli i wdrożenia aplikacji.\n\nAsystent reklamacyjny\nProjekt zespołowy: wdrożenie asystenta do odpowiedzi na reklamacje. Zakres zespołu: przygotowanie testów, porównanie wersji i decyzja o pilotażu. Pilotaż objął jeden zespół wsparcia.",
+      "exampleScore": 72,
+      "exampleSummary": "Zgłoszenie na rolę związaną z ewaluacją wdrożeń AI."
+    },
+    {
+      "id": "candidate-contribution-piotr",
+      "name": "Piotr Gajda",
+      "headline": "Inżynier AI · Build",
+      "location": "Łódź",
+      "bio": "Projekt zespołowy: pilotaż asystenta do analizy dokumentów dostawców. W projekcie porównywano błędy kolejnych wersji na próbkach. Po pilotażu rozszerzono zakres.",
+      "role": "candidate",
+      "cv": "Profil zawodowy\nInżynier AI, 4 lata doświadczenia. Python, ewaluacja modeli i wdrożenia aplikacji.\n\nAsystent dokumentów\nProjekt zespołowy: pilotaż asystenta do analizy dokumentów dostawców. W projekcie porównywano błędy kolejnych wersji na próbkach. Po pilotażu rozszerzono zakres.",
+      "exampleScore": 72,
+      "exampleSummary": "Zgłoszenie na rolę związaną z ewaluacją wdrożeń AI."
     }
   ]
 }

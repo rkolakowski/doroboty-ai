@@ -4,8 +4,15 @@ import { Textarea } from "@/components/ui/textarea";
 import { ApplicationRecord } from "./application-record";
 import { nextStages, stageLabels, type Application } from "./model";
 import { usePrototype } from "./store";
+import type { ContributionReview } from "./contribution-review";
 
-export function RecruitingApplication({ application }: { application: Application }) {
+export function RecruitingApplication({
+  application,
+  review,
+}: {
+  application: Application;
+  review?: ContributionReview | null;
+}) {
   const { state, run } = usePrototype();
   const [note, setNote] = useState("");
   const [announcement, setAnnouncement] = useState("");
@@ -27,6 +34,7 @@ export function RecruitingApplication({ application }: { application: Applicatio
         application={application}
         companyName={company?.name ?? ""}
         audience="employer"
+        review={review}
         history={application.events}
         statusRef={statusRef}
         footer={

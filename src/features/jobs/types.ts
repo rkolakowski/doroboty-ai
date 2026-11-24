@@ -1,3 +1,5 @@
+import type { ApplicationQuestion } from "@/features/prototype/application-questions";
+
 export const jobCategories = ["build", "apply", "lead"] as const;
 export const jobFunctions = [
   "product",
@@ -43,6 +45,9 @@ export type Job = {
   slug: string;
   companyId: string;
   title: string;
+  contributionQuestion?: string;
+  applicationQuestions?: ApplicationQuestion[];
+  screeningIntro?: string;
   summary: string;
   description: string;
   category: JobCategory;
