@@ -3,6 +3,14 @@ import marketplace from "./data/marketplace.json" with { type: "json" };
 import people from "./data/people.json" with { type: "json" };
 import buildScenario from "./data/build-scenario.json" with { type: "json" };
 import type { JobWithCompany } from "@/features/jobs/types";
+import { contributionRoleId } from "./contribution-review";
+import {
+  maxApplicationQuestions,
+  questionKey,
+  questionResponsesSchema,
+  questionsSchema,
+  type QuestionResponse,
+} from "./application-questions";
 
 const id = z
   .string()
@@ -32,6 +40,9 @@ export const jobSchema = z
     slug: id,
     companyId: id,
     title: shortText,
+    contributionQuestion: shortText.optional(),
+    applicationQuestions: questionsSchema.optional(),
+    screeningIntro: z.string().trim().max(1000).optional(),
     summary: text.min(10),
     description: text.min(30),
     category: z.enum(["build", "apply", "lead"]),
@@ -105,32 +116,44 @@ export const nextStages: Record<Stage, Stage[]> = {
   withdrawn: [],
   hired: [],
 };
-const applicationSchema = z.object({
-  id,
-  candidateId: id,
-  jobId: id,
-  companyId: id,
-  jobTitle: shortText,
-  candidateName: shortText,
-  cv: text.min(20),
-  answer: text.min(MIN_APPLICATION_ANSWER_LENGTH),
-  sourceNotes: text,
-  generatedAnswer: text,
-  score: z.number().int().min(0).max(100),
-  summary: text,
-  stage: z.enum(stages),
-  nextStepDue: z.iso.date().optional(),
-  events: z
-    .array(z.object({ stage: z.enum(stages), at: z.iso.datetime(), note: text }))
-    .min(1)
-    .max(30),
-});
+const applicationSchema = z
+  .object({
+    id,
+    candidateId: id,
+    jobId: id,
+    companyId: id,
+    jobTitle: shortText,
+    candidateName: shortText,
+    cv: text.min(20),
+    answer: text,
+    questionResponses: questionResponsesSchema.optional(),
+    contributionQuestion: shortText.optional(),
+    sourceNotes: text,
+    generatedAnswer: text,
+    score: z.number().int().min(0).max(100),
+    summary: text,
+    stage: z.enum(stages),
+    nextStepDue: z.iso.date().optional(),
+    events: z
+      .array(z.object({ stage: z.enum(stages), at: z.iso.datetime(), note: text }))
+      .min(1)
+      .max(30),
+  })
+  .refine(({ answer, questionResponses }) =>
+    questionResponses?.length
+      ? questionResponses.every(
+          ({ response, options }) =>
+            response.length > 0 && (!options || options.includes(response)),
+        )
+      : answer.length >= MIN_APPLICATION_ANSWER_LENGTH,
+  );
 const draftSchema = z.object({
   candidateId: id,
   jobId: id,
   notes: text,
   generated: text,
   answer: text,
+  questionResponses: questionResponsesSchema.optional(),
 });
 export const stateSchema = z
   .object({
@@ -203,13 +226,21 @@ export type Action =
   | { type: "select_person"; id: string | null }
   | { type: "profile"; value: z.infer<typeof profileSchema> }
   | { type: "toggle_saved"; jobId: string }
-  | { type: "draft"; jobId: string; notes: string; generated: string; answer: string }
+  | {
+      type: "draft";
+      jobId: string;
+      notes: string;
+      generated: string;
+      answer: string;
+      questionResponses?: QuestionResponse[];
+    }
   | {
       type: "submit";
       jobId: string;
       notes: string;
       generated: string;
       answer: string;
+      questionResponses?: QuestionResponse[];
       consent: boolean;
     }
   | { type: "stage"; applicationId: string; stage: Stage; note: string }
@@ -223,10 +254,24 @@ export function addBuildScenario(state: State): State {
     ...current,
     ...examples.filter((example) => !current.some(({ id }) => id === example.id)),
   ];
+  const scenarioJobs: {
+    id: string;
+    contributionQuestion?: string;
+    applicationQuestions?: unknown;
+  }[] = buildScenario.jobs;
+  const demoRole = scenarioJobs.find((job) => job.id === contributionRoleId);
+  const jobs = state.jobs.map((job) =>
+    job.id === demoRole?.id &&
+    job.verificationStatus === "unverified" &&
+    !job.applicationQuestions &&
+    job.contributionQuestion === demoRole.contributionQuestion
+      ? { ...job, applicationQuestions: demoRole.applicationQuestions }
+      : job,
+  );
   const result = stateSchema.safeParse({
     ...state,
     companies: merge(state.companies, buildScenario.companies),
-    jobs: merge(state.jobs, buildScenario.jobs),
+    jobs: merge(jobs, buildScenario.jobs),
     people: merge(state.people, buildScenario.people),
     applications: merge(state.applications, buildScenario.applications),
   });
@@ -316,6 +361,21 @@ export function transition(
     if (!action.consent) fail("Zatwierdź treść i zgodę na przesłanie aplikacji.");
     if (s.applications.some((x) => x.candidateId === p.id && x.jobId === job.id))
       fail("Aplikacja na tę ofertę została już wysłana.");
+    const responsesByQuestion = new Map(
+      questionResponsesSchema
+        .parse(action.questionResponses ?? [])
+        .map((row) => [questionKey(row), row.response]),
+    );
+    const questionResponses = (job.applicationQuestions ?? []).map((question) => ({
+      ...question,
+      response: responsesByQuestion.get(questionKey(question)) ?? "",
+    }));
+    if (
+      questionResponses.some(
+        ({ response, options }) => !response || (options && !options.includes(response)),
+      )
+    )
+      fail("Uzupełnij poprawne odpowiedzi na pytania z aktualnej oferty.");
     s.applications.push(
       applicationSchema.parse({
         id: newId,
@@ -326,6 +386,8 @@ export function transition(
         candidateName: p.name,
         cv: p.cv,
         answer: action.answer,
+        questionResponses: questionResponses.length ? questionResponses : undefined,
+        contributionQuestion: job.contributionQuestion,
         sourceNotes: action.notes,
         generatedAnswer: action.generated,
         score: p.exampleScore,
@@ -368,6 +430,8 @@ export function transition(
     const p = employer();
     const job = jobSchema.parse(action.job);
     if (job.companyId !== p.companyId) fail("Wybierz ofertę własnej firmy.");
+    if ((job.applicationQuestions?.length ?? 0) > maxApplicationQuestions)
+      fail(`Oferta może zawierać najwyżej ${maxApplicationQuestions} pytań.`);
     const index = s.jobs.findIndex((x) => x.id === job.id);
     if (index >= 0) {
       if (s.jobs[index].companyId !== p.companyId) fail("Nie można zmienić tej oferty.");

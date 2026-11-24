@@ -16,6 +16,13 @@ import { currentPerson, jobSchema } from "./model";
 import { usePrototype } from "./store";
 import { Field } from "./workspace";
 import { Empty, NotFound, PageTitle } from "./shell";
+import {
+  maxPromptLength,
+  maxApplicationQuestions,
+  maxOptions,
+  type ApplicationQuestion,
+  questionsSchema,
+} from "./application-questions";
 
 export function EmployerJobs() {
   const { state } = usePrototype();
@@ -78,6 +85,20 @@ export function EmployerJobEditor() {
   const [generated, setGenerated] = useState(existing?.generatedDescription ?? "");
   const [approved, setApproved] = useState(false);
   const [error, setError] = useState("");
+  const [questionRows, setQuestionRows] = useState<
+    (ApplicationQuestion & { rowId: string; closed: boolean })[]
+  >(() => {
+    const saved: ApplicationQuestion[] =
+      existing?.applicationQuestions ??
+      (existing?.contributionQuestion
+        ? [{ kind: "contribution" as const, prompt: existing.contributionQuestion }]
+        : []);
+    return saved.map((question, index) => ({
+      ...question,
+      closed: Boolean(question.options),
+      rowId: `question-saved-${index}`,
+    }));
+  });
   if (id !== "nowa" && !existing) return <NotFound />;
   function publish(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -87,6 +108,27 @@ export function EmployerJobEditor() {
       return;
     }
     const data = new FormData(e.currentTarget);
+    const applicationQuestions = questionsSchema.safeParse(
+      questionRows.map(({ kind, rowId, closed }) => ({
+        kind,
+        prompt: String(data.get(rowId) ?? ""),
+        options: closed
+          ? String(data.get(rowId + "-options") ?? "")
+              .split(/\r?\n/)
+              .map((value) => value.trim())
+              .filter(Boolean)
+          : undefined,
+      })),
+    );
+    if (
+      !applicationQuestions.success ||
+      applicationQuestions.data.length > maxApplicationQuestions
+    ) {
+      setError(
+        `Wpisz do ${maxApplicationQuestions} pytań łącznie. Treść pytania i odpowiedzi może mieć do ${maxPromptLength} znaków. W pytaniu zamkniętym wpisz od 2 do ${maxOptions} różnych odpowiedzi.`,
+      );
+      return;
+    }
     const newId = existing?.id ?? crypto.randomUUID();
     const parsed = jobSchema.safeParse({
       id: newId,
@@ -95,6 +137,15 @@ export function EmployerJobEditor() {
       title,
       summary,
       description,
+      applicationQuestions: applicationQuestions.data.length
+        ? applicationQuestions.data
+        : undefined,
+      contributionQuestion: applicationQuestions.data.some(
+        ({ kind, prompt }) => kind === "contribution" && prompt === existing?.contributionQuestion,
+      )
+        ? existing?.contributionQuestion
+        : undefined,
+      screeningIntro: String(data.get("screeningIntro") ?? "").trim() || undefined,
       sourceBrief: source,
       generatedDescription: generated,
       category: data.get("category"),
@@ -252,6 +303,118 @@ export function EmployerJobEditor() {
             <Input name="salaryMax" type="number" min="0" defaultValue={existing?.salaryMax} />
           </Field>
         </div>
+        <fieldset className="prototype-panel space-y-4">
+          <legend className="font-semibold">Pytania wstępne</legend>
+          <p className="text-muted-foreground" aria-live="polite">
+            Liczba pytań: {questionRows.length} z {maxApplicationQuestions} w całej ofercie.
+            {questionRows.length > maxApplicationQuestions &&
+              " Usuń nadmiarowe pytania przed publikacją."}
+          </p>
+          <Field label="Opis pytań wstępnych">
+            <Textarea
+              name="screeningIntro"
+              maxLength={1000}
+              defaultValue={existing?.screeningIntro}
+              onChange={() => setApproved(false)}
+              placeholder="Np. Poniższe pytania pomogą nam ustalić, czy warunki współpracy Ci odpowiadają."
+            />
+          </Field>
+          {questionRows.length > 0 && (
+            <ol className="space-y-4">
+              {questionRows.map((row, index) => (
+                <li
+                  key={row.rowId}
+                  className="space-y-3 rounded-[var(--gui-radius-m)] border border-[var(--gui-edge)] p-4"
+                >
+                  <Field label={`Pytanie ${index + 1}`}>
+                    <Input
+                      id={row.rowId}
+                      name={row.rowId}
+                      required
+                      maxLength={maxPromptLength}
+                      defaultValue={row.prompt}
+                      onChange={() => setApproved(false)}
+                    />
+                  </Field>
+                  <Field label={`Typ pytania ${index + 1}`}>
+                    <select
+                      className="native-select min-h-10 w-full rounded-[var(--gui-radius-s)] bg-white px-3"
+                      value={row.closed ? "closed" : "text"}
+                      onChange={(event) => {
+                        const closed = event.target.value === "closed";
+                        setQuestionRows((current) =>
+                          current.map((item) =>
+                            item.rowId === row.rowId ? { ...item, closed } : item,
+                          ),
+                        );
+                        setApproved(false);
+                      }}
+                    >
+                      <option value="text">Otwarte · odpowiedź tekstowa</option>
+                      <option value="closed">Zamknięte · jednokrotny wybór</option>
+                    </select>
+                  </Field>
+                  {row.closed && (
+                    <Field label={`Opcje odpowiedzi do pytania ${index + 1}`}>
+                      <Textarea
+                        name={row.rowId + "-options"}
+                        required
+                        rows={3}
+                        defaultValue={row.options?.join("\n")}
+                        maxLength={maxOptions * (maxPromptLength + 1)}
+                        onChange={(event) => {
+                          const options = event.target.value.split("\n");
+                          setQuestionRows((current) =>
+                            current.map((item) =>
+                              item.rowId === row.rowId ? { ...item, options } : item,
+                            ),
+                          );
+                          setApproved(false);
+                        }}
+                        placeholder="Wpisz od 2 do 10 różnych odpowiedzi, po jednej w wierszu."
+                      />
+                    </Field>
+                  )}
+                  <Button
+                    type="button"
+                    variant="outline"
+                    aria-label={`Usuń pytanie ${index + 1}`}
+                    onClick={() => {
+                      const focusId =
+                        questionRows[index + 1]?.rowId ??
+                        questionRows[index - 1]?.rowId ??
+                        "add-question";
+                      setQuestionRows((current) =>
+                        current.filter((item) => item.rowId !== row.rowId),
+                      );
+                      setApproved(false);
+                      requestAnimationFrame(() => document.getElementById(focusId)?.focus());
+                    }}
+                  >
+                    Usuń
+                  </Button>
+                </li>
+              ))}
+            </ol>
+          )}
+          <Button
+            id="add-question"
+            type="button"
+            variant="outline"
+            disabled={questionRows.length >= maxApplicationQuestions}
+            onClick={() => {
+              const rowId = `question-${crypto.randomUUID()}`;
+              setQuestionRows((current) => [
+                ...current,
+                { kind: "screening", prompt: "", closed: false, rowId },
+              ]);
+              setApproved(false);
+              requestAnimationFrame(() => document.getElementById(rowId)?.focus());
+            }}
+          >
+            Dodaj pytanie
+          </Button>
+        </fieldset>
         <label className="flex items-start gap-3">
           <Checkbox
             checked={approved}

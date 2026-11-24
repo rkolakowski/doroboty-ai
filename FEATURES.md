@@ -85,6 +85,13 @@ Stable IDs are retained, including explicit removed entries. The legacy duplicat
 - EMP-07 shows saved deadlines in the company application list. `?wariant=status` hides the deadline and panel for the status-only comparison.
 - SYS-07 and SYS-09 also include a local Build scenario based on three synthetic CSV applications. Existing saved records are retained. Participant packaging replaces this fixture with an empty file.
 
+### Candidate contribution comparison
+
+- EMP-03 and CAN-13 support one per-offer screening list of up to ten questions. Employers choose text or single choice and configure the options. Candidates save individual answers as drafts and submit a copy of the questions and their answers.
+
+- CAN-13 and CAN-15 support a role-specific contribution question with the submitted answer saved on the application. Other roles keep the standard answer prompt.
+- EMP-07 and EMP-08 support two prepared Build sets with CV-only and CV-plus-card variants. Both hide score and summary during the comparison. The general employer list receives submitted contribution cards in the normal application flow.
+
 ## Sources and coverage
 
 - Routing and UI: [prototype features](src/features/prototype/), [shared controls](src/components/ui/), [theme](GUI.md).

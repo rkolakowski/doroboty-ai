@@ -173,6 +173,16 @@
 .recruiting-record {
   min-width: 0;
 }
+.contribution-card {
+  margin-top: 24px;
+  padding: clamp(18px, 4vw, 28px);
+  border-radius: var(--gui-radius-m);
+  background: var(--gui-highlight);
+  color: var(--gui-text);
+}
+.contribution-card p + p {
+  margin-top: 12px;
+}
 .next-step-record {
   margin-inline: auto;
   max-width: 920px;
